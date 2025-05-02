@@ -1,4 +1,4 @@
-- Descrizione del Progetto
+# - Descrizione del Progetto
 
 
 Questa applicazione Android sviluppata in Kotlin e XML consente all'utente di:
@@ -15,9 +15,9 @@ Questa applicazione Android sviluppata in Kotlin e XML consente all'utente di:
 
 
 
-- Funzionalità Principali
+# - Funzionalità Principali
 
-•Generazione di un Numero Random & Immagine del Dado
+• Generazione di un Numero Random & Immagine del Dado
 Il cuore dell’app è la funzione rollDice() in MainActivity.kt, che utilizza Random.nextInt(1, 7) per ottenere un numero casuale tra 1 e 6. A ogni numero è associata un'immagine del dado tramite un blocco when, e questa immagine viene aggiornata nella ImageView.
 
 val randomNumber = Random.nextInt(1, 7)
@@ -28,7 +28,7 @@ diceImage.setImageResource(diceResource)
 
 
 
-- Messaggio Temporaneo 
+# - Messaggio Temporaneo 
 
 Dopo il lancio, viene mostrato un Toast (cioè un messaggio temporaneo) che comunica all'utente il numero uscito:
 
@@ -39,7 +39,7 @@ Toast.makeText(this, "Hai tirato un $randomNumber!", Toast.LENGTH_SHORT).show()
 
 
 
-- Passaggio a una Nuova Schermata
+# - Passaggio a una Nuova Schermata
 
 Dopo il lancio, viene avviata la ResultActivity passando il numero del dado tramite un Intent:
 
@@ -52,7 +52,7 @@ startActivity(intent)
 
 
 
-- Verifica della Vittoria
+# - Verifica della Vittoria
 
 Nella schermata ResultActivity, l'app controlla se il numero estratto è 6. In tal caso, mostra "Hai vinto!", altrimenti "Non hai vinto. Riprova!".
 
@@ -68,10 +68,10 @@ if (diceNumber == 6) {
 
 
 
-- Struttura dei File
+# - Struttura dei File
 
 
-MainActivity.kt
+## MainActivity.kt
 
 • Mostra la schermata principale con l’immagine del dado e un bottone per lanciarlo.
 
@@ -80,14 +80,14 @@ MainActivity.kt
 • Passa il numero estratto alla seconda schermata.
 
 
-ResultActivity.kt
+## ResultActivity.kt
 
 • Mostra il risultato della giocata (vittoria/sconfitta).
 
 • Contiene un bottone per tornare alla schermata iniziale (MainActivity).
 
 
-activity_main.xml
+## activity_main.xml
 
 • Layout verticale con:
 
@@ -98,14 +98,14 @@ activity_main.xml
 • Layout centrato, con padding per una migliore visualizzazione.
 
 
-activity_result.xml
+## activity_result.xml
 
 • Layout con un TextView che mostra il risultato.
 
 • Button per tornare indietro alla schermata principale.
 
 
-AndroidManifest.xml
+## AndroidManifest.xml
 
 • Registra le attività dell’app (MainActivity e ResultActivity).
 
@@ -116,7 +116,7 @@ AndroidManifest.xml
 
 
 
-- Aggiunte Grafiche Extra
+# - Aggiunte Grafiche Extra
 
 • Le immagini del dado sono gestite tramite sei risorse grafiche (dice_1.png ... dice_6.png).
 
