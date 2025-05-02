@@ -1,0 +1,125 @@
+- Descrizione del Progetto
+
+
+Questa applicazione Android sviluppata in Kotlin e XML consente all'utente di:
+
+• Lanciare un dado generando un numero casuale da 1 a 6.
+
+• Visualizzare l'immagine del dado corrispondente al numero estratto.
+
+• Mostrare un messaggio temporaneo (Toast) con il numero ottenuto.
+
+• Passare a una seconda schermata per verificare se si è vinto o meno (si vince solo estraendo il numero 6).
+
+
+
+
+
+- Funzionalità Principali
+
+•Generazione di un Numero Random & Immagine del Dado
+Il cuore dell’app è la funzione rollDice() in MainActivity.kt, che utilizza Random.nextInt(1, 7) per ottenere un numero casuale tra 1 e 6. A ogni numero è associata un'immagine del dado tramite un blocco when, e questa immagine viene aggiornata nella ImageView.
+
+val randomNumber = Random.nextInt(1, 7)
+val diceResource = when (randomNumber) { ... }
+diceImage.setImageResource(diceResource)
+
+
+
+
+
+- Messaggio Temporaneo 
+
+Dopo il lancio, viene mostrato un Toast (cioè un messaggio temporaneo) che comunica all'utente il numero uscito:
+
+
+Toast.makeText(this, "Hai tirato un $randomNumber!", Toast.LENGTH_SHORT).show()
+
+
+
+
+
+- Passaggio a una Nuova Schermata
+
+Dopo il lancio, viene avviata la ResultActivity passando il numero del dado tramite un Intent:
+
+
+val intent = Intent(this, ResultActivity::class.java)
+intent.putExtra("diceNumber", randomNumber)
+startActivity(intent)
+
+
+
+
+
+- Verifica della Vittoria
+
+Nella schermata ResultActivity, l'app controlla se il numero estratto è 6. In tal caso, mostra "Hai vinto!", altrimenti "Non hai vinto. Riprova!".
+
+
+if (diceNumber == 6) {
+    resultText.text = "Hai vinto!"
+} else {
+    resultText.text = "Non hai vinto. Riprova!"
+}
+
+
+
+
+
+
+- Struttura dei File
+
+
+MainActivity.kt
+
+• Mostra la schermata principale con l’immagine del dado e un bottone per lanciarlo.
+
+• Contiene la logica per il numero random e per cambiare immagine.
+
+• Passa il numero estratto alla seconda schermata.
+
+
+ResultActivity.kt
+
+• Mostra il risultato della giocata (vittoria/sconfitta).
+
+• Contiene un bottone per tornare alla schermata iniziale (MainActivity).
+
+
+activity_main.xml
+
+• Layout verticale con:
+
+• ImageView per l’immagine del dado.
+
+• Button per lanciare il dado.
+
+• Layout centrato, con padding per una migliore visualizzazione.
+
+
+activity_result.xml
+
+• Layout con un TextView che mostra il risultato.
+
+• Button per tornare indietro alla schermata principale.
+
+
+AndroidManifest.xml
+
+• Registra le attività dell’app (MainActivity e ResultActivity).
+
+• Imposta MainActivity come schermata iniziale.
+
+
+
+
+
+
+- Aggiunte Grafiche Extra
+
+• Le immagini del dado sono gestite tramite sei risorse grafiche (dice_1.png ... dice_6.png).
+
+• Il layout è centrato e ha un aspetto pulito e minimale.
+
+• È stato aggiunto android:padding="24dp" per rendere l’interfaccia più piacevole su diversi dispositivi.
